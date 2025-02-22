@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poke Battle</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Maven+Pro:wght@400..900&family=Pixelify+Sans&display=swap" rel="stylesheet">
+</head>
+<body id="body">
+</body>
+<script>
+    let body = document.getElementsByTagName("body")[0]
+    body.style.backgroundColor = "black"
+
+    function AberturaDoJogo() {
+        var AgruparFlex = document.createElement("div")
+        var h = document.createElement("h1")
+        var p = document.createElement("p")
+        var img = document.createElement("img")
+        
+        body.style.overflow = "hidden"
+
+        AgruparFlex.style.position = "absolute"
+        AgruparFlex.style.width = "100%"
+        AgruparFlex.style.height = "100%"
+        AgruparFlex.style.display = "flex"
+        AgruparFlex.style.alignItems = "center"
+        AgruparFlex.style.justifyContent = "center"
+        AgruparFlex.style.flexDirection = "column"
+
+        h.style.color = "white"
+        h.style.fontSize = "10vh"
+        p.style.color = "white"
+        p.style.fontSize = "3vh"
+        img.style.width = "15vh"
+
+        body.appendChild(AgruparFlex)
+        AgruparFlex.appendChild(h)
+        AgruparFlex.appendChild(p)
+        AgruparFlex.appendChild(img)
+
+        h.innerHTML = "PokeBattle"
+        p.innerHTML = "Made <br> with:"
+        img.src = "/imgs/PokeAPIimg.png"
+
+        setTimeout(() => {
+            body.style.backgroundColor = "white"
+            h.remove()
+            p.remove()
+            img.remove()
+        }, 2500);
+    }
+
+    AberturaDoJogo()
+</script>
+</html>
