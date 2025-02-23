@@ -2,10 +2,12 @@
     font-family:  "Pixelify Sans", sans-serif;
 }
 #EnemyContainer{
+    position: relative;
     width: 100%;
     margin-top: 5%;
     display: flex;
     justify-content: end;
+    background-color: red;
 }
 #EnemyLifeBar{
     width: 20vh;
@@ -17,25 +19,26 @@
 }
 #EnemySprite{
     width: 27vh;
-    margin-right: 15vw;
 }
 
 #AllyContainer{
+    position: relative;
     width: 100%;
     display: flex;
     justify-content: start;
+    background-color: red;
+    margin-top: 5%;
 }
 #AllySprite{
     width: 33vh;
-    margin-left: 15vw;
 }
 
-@media screen and (min-width: 800px){
+@media screen and (min-width: 1000px){
     #EnemySprite{
-        margin-right: 32vw;
+        margin-right: 10vw;
     }
 
     #AllySprite{
-        margin-left: 32vw;
+        margin-left: 10vw;
     }
 }
