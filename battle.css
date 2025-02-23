@@ -1,0 +1,41 @@
+*{
+    font-family:  "Pixelify Sans", sans-serif;
+}
+#EnemyContainer{
+    width: 100%;
+    margin-top: 5%;
+    display: flex;
+    justify-content: end;
+}
+#EnemyLifeBar{
+    width: 20vh;
+    height: 10vh;
+    position: absolute;
+    left: 10%;
+    top: 5%;
+    background-color: #E6E3C3;
+}
+#EnemySprite{
+    width: 27vh;
+    margin-right: 15vw;
+}
+
+#AllyContainer{
+    width: 100%;
+    display: flex;
+    justify-content: start;
+}
+#AllySprite{
+    width: 33vh;
+    margin-left: 15vw;
+}
+
+@media screen and (min-width: 800px){
+    #EnemySprite{
+        margin-right: 32vw;
+    }
+
+    #AllySprite{
+        margin-left: 32vw;
+    }
+}

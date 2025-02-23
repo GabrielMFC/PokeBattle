@@ -141,6 +141,14 @@ let body = document.getElementsByTagName("body")[0]
                 })
             })
 
+            playBtn.addEventListener("click", () => {
+                localStorage.setItem("IdAlly", AllypokemonSearcher.value)
+
+                localStorage.setItem("IdEnemy", EnemypokemonSearcher.value)
+
+                window.location.href = "battle.html"
+            })
+
         }, 2000);
     }
 
