@@ -30,7 +30,7 @@ let body = document.getElementsByTagName("body")[0]
 
         h.innerHTML = "PokeBattle"
         p.innerHTML = "Made <br> with:"
-        img.src = "/imgs/PokeAPIimg.png"
+        img.src = "/imgs/ApiImg.png"
 
         setTimeout(() => {
             body.style.backgroundColor = "black"

@@ -1,44 +1,74 @@
 *{
     font-family:  "Pixelify Sans", sans-serif;
 }
-#EnemyContainer{
-    position: relative;
-    width: 100%;
-    margin-top: 5%;
-    display: flex;
-    justify-content: end;
-    background-color: red;
-}
-#EnemyLifeBar{
-    width: 20vh;
-    height: 10vh;
-    position: absolute;
-    left: 10%;
-    top: 5%;
-    background-color: #E6E3C3;
-}
-#EnemySprite{
-    width: 27vh;
+
+body{
+    overflow-x: hidden;
 }
 
-#AllyContainer{
+.container{
     position: relative;
     width: 100%;
-    display: flex;
-    justify-content: start;
-    background-color: red;
     margin-top: 5%;
+    display: flex;
+}
+#EnemyContainer{
+    justify-content: end;
+}
+#AllyContainer{
+    justify-content: start;
+}
+
+.PokeInfo{
+    position: absolute;
+    background-color: #E6E3C3;
+}
+#EnemyInfo{
+    width: 35vh;
+    height: 14vh;
+    left: 10vw;
+    top: 5%;
+}
+#AllyInfo{
+    width: 20vh;
+    height: 10vh;
+    top: 5%;
+    right: 15vw;
+}
+
+#EnemySprite{
+    width: 28vh;
+    z-index: 2;
 }
 #AllySprite{
     width: 33vh;
+    z-index: 2;
+}
+
+
+#UserControl{
+    position: absolute;
+    background-color: #E6E3C3;
+    width: 100%;
+    height: 13vh;
+    bottom: 0%;
+    left: 0%;
 }
 
 @media screen and (min-width: 1000px){
     #EnemySprite{
-        margin-right: 10vw;
+        margin-right: 30vw;
     }
 
     #AllySprite{
-        margin-left: 10vw;
+        margin-left: 30vw;
+    }
+
+    #EnemyLifeBar{
+        margin-left: 25vw;
+    }
+    
+    #AllyLifeBar{
+        margin-right: 25vw;
     }
 }
