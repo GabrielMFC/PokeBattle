@@ -13,35 +13,50 @@ body{
     display: flex;
 }
 #EnemyContainer{
-    justify-content: end;
+    justify-content: center;
 }
 #AllyContainer{
-    justify-content: start;
+    justify-content: center;
+}
+
+.Group{
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
 
 .PokeInfo{
-    position: absolute;
+    position: relative;
     background-color: #E6E3C3;
 }
 #EnemyInfo{
-    width: 35vh;
+    width: 30vh;
     height: 14vh;
-    left: 10vw;
     top: 5%;
 }
 #AllyInfo{
-    width: 20vh;
+    width: 30vh;
     height: 10vh;
     top: 5%;
-    right: 15vw;
+}
+
+#EnemyName{
+    font-size: 2.8vh;
+    text-align: center;
+}
+#AllyName{
+    font-size: 2.8vh;
+    text-align: center;
 }
 
 #EnemySprite{
     width: 28vh;
+    margin-left: 10vw;
     z-index: 2;
 }
 #AllySprite{
     width: 33vh;
+    margin-right: 10vw;
     z-index: 2;
 }
 
@@ -53,22 +68,4 @@ body{
     height: 13vh;
     bottom: 0%;
     left: 0%;
-}
-
-@media screen and (min-width: 1000px){
-    #EnemySprite{
-        margin-right: 30vw;
-    }
-
-    #AllySprite{
-        margin-left: 30vw;
-    }
-
-    #EnemyLifeBar{
-        margin-left: 25vw;
-    }
-    
-    #AllyLifeBar{
-        margin-right: 25vw;
-    }
 }
