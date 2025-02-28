@@ -1,4 +1,6 @@
-let body = document.getElementsByTagName("body")[0]
+const body = document.getElementsByTagName("body")[0]
+const LimitedIMG = document.getElementById("LimitedIMG")
+
     body.style.backgroundColor = "black"
 
     function AberturaDoJogo() {
@@ -30,7 +32,7 @@ let body = document.getElementsByTagName("body")[0]
 
         h.innerHTML = "PokeBattle"
         p.innerHTML = "Made <br> with:"
-        img.src = "/imgs/ApiImg.png"
+        LimitedIMG.src = "/imgs/ApiImg.png"
 
         setTimeout(() => {
             body.style.backgroundColor = "black"
