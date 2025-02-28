@@ -4,3 +4,7 @@
 body{
     overflow: hidden;
 }
+
+#LimitedIMG{
+    width: 25vh;
+}

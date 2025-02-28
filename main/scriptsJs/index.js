@@ -32,7 +32,8 @@ const LimitedIMG = document.getElementById("LimitedIMG")
 
         h.innerHTML = "PokeBattle"
         p.innerHTML = "Made <br> with:"
-        LimitedIMG.src = "/imgs/ApiImg.png"
+
+        AgruparFlex.appendChild(LimitedIMG)
 
         setTimeout(() => {
             body.style.backgroundColor = "black"
@@ -40,6 +41,7 @@ const LimitedIMG = document.getElementById("LimitedIMG")
             h.remove()
             p.remove()
             img.remove()
+            LimitedIMG.remove()
 
             var title = document.createElement("h1")
             var centralizarFlex = document.createElement("div")
