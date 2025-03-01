@@ -45,7 +45,7 @@ body{
     margin-left: 10%;
 }
 #AllyInfo{
-    width: 20vh;
+    width: 25vh;
     height: 14vh;
     margin-right: 10%;
     top: 5%;
@@ -65,15 +65,44 @@ body{
     z-index: 2;
 }
 #AllySprite{
-    width: 33vh;
+    width: 30vh;
     z-index: 2;
 }
 
 #UserControl{
     position: absolute;
     background-color: #E6E3C3;
-    height: 13vh;
+    height: 25vh;
     width: 100vw;
     bottom: 0%;
     left: 0%;
+}
+
+@media screen and (max-width: 800px) {
+    .container{
+        margin-top: 10%;
+    }
+
+    #EnemySprite{
+        width: 22vh;
+    }
+    #AllySprite{
+        width: 30vh;
+    }
+
+    #EnemyInfo{
+        width: 20vh;
+        height: 10vh;
+    }
+    #AllyInfo{
+        width: 20vh;
+        height: 10vh;
+    }
+
+    #EnemyName{
+        font-size: 2vh;
+    }
+    #AllyName{
+        font-size: 2vh;
+    }
 }
