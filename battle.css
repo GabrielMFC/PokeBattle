@@ -37,6 +37,8 @@ body{
 .PokeInfo{
     position: relative;
     background-color: #E6E3C3;
+    border: 2px solid black;
+    border-radius: 2vh 0vh 2vh 0vh;
 }
 #EnemyInfo{
     width: 25vh;
@@ -54,10 +56,12 @@ body{
 #EnemyName{
     font-size: 2.8vh;
     text-align: center;
+    margin-top: 5%;
 }
 #AllyName{
     font-size: 2.8vh;
     text-align: center;
+    margin-top: 5%;
 }
 
 #EnemySprite{
@@ -69,16 +73,58 @@ body{
     z-index: 2;
 }
 
+.lifeBar{
+    position: absolute;
+    right: 5%;
+    bottom: 35%;
+    background-color: greenyellow;
+    width: 80%;
+    height: 2vh;
+}
+
+.lifeBar::before{
+    content: "";
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    width: 0%;
+    height: 100%;
+    background-color: red;
+    z-index: 2;
+}
+
 #UserControl{
     position: absolute;
     background-color: #E6E3C3;
+    display: flex;
+    justify-content: center;
     height: 25vh;
     width: 100vw;
     bottom: 0%;
     left: 0%;
 }
+#moveGroup{
+    position: absolute;
+    width: 45vh;
+    height: 100%;
+    background-color: red;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 5%;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+}
+.move{
+    position: relative;
+    background-color: blue;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 200px) {
     .container{
         margin-top: 10%;
     }
