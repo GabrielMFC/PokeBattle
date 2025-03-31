@@ -19,6 +19,7 @@ const AllyLifeBar = document.getElementById("AllyLifeBar")
 const moveGroup = document.getElementById("moveGroup")
 
 function Scene() {
+
     var AllySprite = document.createElement("img")
     var EnemySprite = document.createElement("img")
 
@@ -48,12 +49,14 @@ function Scene() {
 
         AllyName.innerHTML = response.data.forms[0].name
 
-        console.log(response.data)
-
         for(let i = 0; i < 4; i++){
-            var move = document.createElement("div")
+            var move = document.createElement("button")
 
             move.className = "move"
+
+            // move.id = response.data.moves[i].move.name
+
+            move.id = "move" + i
     
             move.innerHTML = response.data.moves[i].move.name
     
@@ -63,6 +66,18 @@ function Scene() {
     .catch((error) => {
         console.error(error)
     })
+}
+
+function getAllyPokemonData() {
+
+  return axios.get(`https://pokeapi.co/api/v2/pokemon/${AllyPokemonId}`)
+    .then((response) => {
+      return localStorage.setItem("AllyData", response.data)
+
+    })
+    .catch((error) => {
+      console.error(error)
+    });
 }
 
 Scene()

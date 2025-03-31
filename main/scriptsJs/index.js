@@ -74,6 +74,7 @@ const LimitedIMG = document.getElementById("LimitedIMG")
 
             AllyBtn.type = "button"
             AllyBtn.style.cursor = "pointer"
+            AllyBtn.style.width = "2.5vh"
 
             playBtn.type = "button"
             playBtn.value = "Play"
@@ -94,6 +95,7 @@ const LimitedIMG = document.getElementById("LimitedIMG")
 
             EnemyBtn.type = "button"
             EnemyBtn.style.cursor = "pointer"
+            EnemyBtn.style.width = "2.5vh"
 
             centralizarFlex.style.position = "absolute"
             centralizarFlex.style.width = "100%"
@@ -124,7 +126,6 @@ const LimitedIMG = document.getElementById("LimitedIMG")
             EnemypokemonContainer.appendChild(EnemyPokemonSprite)
             EnemyContainer.appendChild(EnemyBtn)
 
-            //1025 pokemons
             AllyBtn.addEventListener("click", () => {
                 axios.get(`https://pokeapi.co/api/v2/pokemon/${AllypokemonSearcher.value}`)
                 .then((response) => {
@@ -150,7 +151,7 @@ const LimitedIMG = document.getElementById("LimitedIMG")
 
                 localStorage.setItem("IdEnemy", EnemypokemonSearcher.value)
 
-                window.location.href = "battle.html"
+                window.location.href = "/battle/battle.html"
             })
 
         }, 2000);
