@@ -151,7 +151,7 @@ const LimitedIMG = document.getElementById("LimitedIMG")
 
                 localStorage.setItem("IdEnemy", EnemypokemonSearcher.value)
 
-                window.location.href = "/battle/battle.html"
+                window.location.href = "battle.html"
             })
 
         }, 2000);
