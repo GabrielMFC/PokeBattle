@@ -1,14 +1,33 @@
 const body = document.getElementsByTagName("body")[0]
 const LimitedIMG = document.getElementById("LimitedIMG")
+const AgruparFlex = document.createElement("div")
+const h = document.createElement("h1")
+const p = document.createElement("p")
+var img = document.createElement("img")
 
     body.style.backgroundColor = "black"
 
-    function AberturaDoJogo() {
-        var AgruparFlex = document.createElement("div")
-        var h = document.createElement("h1")
-        var p = document.createElement("p")
-        var img = document.createElement("img")
-        
+    function EnemyyRequest() {
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${document.getElementById("EnemypokemonSearcher").value}`)
+        .then((response) => {
+        document.getElementById("EnemyPokemonSprite").src = response.data.sprites.front_default
+        })
+        .catch((error) => {
+        console.error(error)
+        })
+    }
+    
+     function AllyRequest() {
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${document.getElementById("AllypokemonSearcher").value}`)
+        .then((response) => {
+            document.getElementById("AllyPokemonSprite").src = response.data.sprites.front_default
+        })
+        .catch((error) => {
+        console.error(error)
+        })
+    }
+
+    function GameOpening() {
         body.style.overflow = "hidden"
 
         AgruparFlex.style.position = "absolute"
@@ -34,14 +53,13 @@ const LimitedIMG = document.getElementById("LimitedIMG")
         p.innerHTML = "Made <br> with:"
 
         AgruparFlex.appendChild(LimitedIMG)
+    }
 
-        setTimeout(() => {
+    GameOpening()
+
+    function MenuRender() {
             body.style.backgroundColor = "black"
             AgruparFlex.remove()
-            h.remove()
-            p.remove()
-            img.remove()
-            LimitedIMG.remove()
 
             var title = document.createElement("h1")
             var centralizarFlex = document.createElement("div")
@@ -53,7 +71,7 @@ const LimitedIMG = document.getElementById("LimitedIMG")
             var AllyContainer = document.createElement("div")
             var EnemyContainer = document.createElement("div")
             var AllyBtn = document.createElement("input")
-            var  EnemyBtn = document.createElement("input")
+            var EnemyBtn = document.createElement("input")
 
             title.style.width = "100%"
             title.innerHTML = "Poke Battle"
@@ -70,11 +88,13 @@ const LimitedIMG = document.getElementById("LimitedIMG")
             AllypokemonSearcher.type = "text"
             AllypokemonSearcher.placeholder = "Id..."
             AllypokemonSearcher.style.width = "7vh"
+            AllypokemonSearcher.id = "AllypokemonSearcher"
             AllyContainer.style.marginRight = "5%"
 
             AllyBtn.type = "button"
             AllyBtn.style.cursor = "pointer"
             AllyBtn.style.width = "2.5vh"
+            AllyBtn.id = "AllyBtn"
 
             playBtn.type = "button"
             playBtn.value = "Play"
@@ -90,12 +110,14 @@ const LimitedIMG = document.getElementById("LimitedIMG")
 
             EnemypokemonSearcher.type = "text"
             EnemypokemonSearcher.placeholder = "Id..."
+            EnemypokemonSearcher.id = "EnemypokemonSearcher"
             EnemypokemonSearcher.style.width = "7vh"
             EnemyContainer.style.marginLeft = "5%"
 
             EnemyBtn.type = "button"
             EnemyBtn.style.cursor = "pointer"
             EnemyBtn.style.width = "2.5vh"
+            EnemyBtn.id = "EnemyBtn"
 
             centralizarFlex.style.position = "absolute"
             centralizarFlex.style.width = "100%"
@@ -113,8 +135,10 @@ const LimitedIMG = document.getElementById("LimitedIMG")
             centralizarFlex.appendChild(EnemyContainer)
 
             var AllyPokemonSprite = document.createElement("img")
+            AllyPokemonSprite.id = "AllyPokemonSprite"
 
             var EnemyPokemonSprite = document.createElement("img")
+            EnemyPokemonSprite.id = "EnemyPokemonSprite"
 
             AllyContainer.appendChild(AllypokemonContainer)
             AllyContainer.appendChild(AllypokemonSearcher)
@@ -126,26 +150,6 @@ const LimitedIMG = document.getElementById("LimitedIMG")
             EnemypokemonContainer.appendChild(EnemyPokemonSprite)
             EnemyContainer.appendChild(EnemyBtn)
 
-            AllyBtn.addEventListener("click", () => {
-                axios.get(`https://pokeapi.co/api/v2/pokemon/${AllypokemonSearcher.value}`)
-                .then((response) => {
-                    AllyPokemonSprite.src = response.data.sprites.front_default
-                })
-                .catch((error) => {
-                console.error(error)
-                })
-            })
-
-            EnemyBtn.addEventListener("click", () => {
-                axios.get(`https://pokeapi.co/api/v2/pokemon/${EnemypokemonSearcher.value}`)
-                .then((response) => {
-                EnemyPokemonSprite.src = response.data.sprites.front_default
-                })
-                .catch((error) => {
-                console.error(error)
-                })
-            })
-
             playBtn.addEventListener("click", () => {
                 localStorage.setItem("IdAlly", AllypokemonSearcher.value)
 
@@ -153,8 +157,32 @@ const LimitedIMG = document.getElementById("LimitedIMG")
 
                 window.location.href = "battle.html"
             })
-
-        }, 2000);
     }
 
-    AberturaDoJogo()
+    function wait(ms) {
+        return new Promise(resolve => setTimeout(() =>{
+            resolve()
+        }, ms))
+    }
+
+    function Render() {
+        return new Promise(resolve => {
+            MenuRender()
+            resolve()
+        })
+    }
+
+    async function MenuLoad() {
+        await wait(2000)
+        await Render()
+
+        document.getElementById("EnemyBtn").addEventListener("click", function EnemyLoad() {
+            EnemyyRequest()
+        })
+        
+        document.getElementById("AllyBtn").addEventListener("click", function AllyLoad() {
+            AllyRequest()
+        })
+    }
+
+    MenuLoad()
