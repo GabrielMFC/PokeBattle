@@ -53,6 +53,8 @@ function Scene() {
             var move = document.createElement("button")
 
             move.className = "move"
+            move.dataset.move = response.data.moves[i].move.name
+            move.style.cursor = "pointer"
 
             // move.id = response.data.moves[i].move.name
 
@@ -66,18 +68,6 @@ function Scene() {
     .catch((error) => {
         console.error(error)
     })
-}
-
-function getAllyPokemonData() {
-
-  return axios.get(`https://pokeapi.co/api/v2/pokemon/${AllyPokemonId}`)
-    .then((response) => {
-      return localStorage.setItem("AllyData", response.data)
-
-    })
-    .catch((error) => {
-      console.error(error)
-    });
 }
 
 Scene()
