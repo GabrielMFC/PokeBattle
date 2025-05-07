@@ -1,0 +1,15 @@
+Problemas:
+
+moves que mudam tipagem em batalha(soak, magic powder)
+
+moves com dano fixo(ex: dragon rage, sonic boom)
+
+moves que causam condições negativas(ex: toxic, burn)
+
+moves que causem buff/debuffs(dragon dance, smoke bomb)
+
+moves que mudem sprite e/ou habilidades do pokemon(ex: transform, sketch)
+
+moves que ofereçam cura(ex: absorb, megadreno, gigadreno)
+
+condições especiais(ex: sleep, poison, burn)
