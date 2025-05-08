@@ -3,15 +3,14 @@
 
 import  fetchPlayersStats  from "./utils/statsUtils.js"
 import getDamageEfficiency from "./utils/typeUtils.js"
-import calculateBaseDamage from "./utils/damageUtils.js"
-import fetchMoveData from "./utils/apiUtils.js"
+import damageUtils from "./utils/damageUtils.js"
+import apiUtils from "./utils/apiUtils.js"
 import SpecialEffects from "./specialEffects.js"
+import Enemy from "./enemy.js"
 
 const stats = await fetchPlayersStats()
 
 async function battle() {
-    await fetchPlayersStats()
-
     updateLifeBars()
 
     const allyMoveButtons = document.querySelectorAll(".move")
@@ -29,7 +28,7 @@ async function updateLifeBars() {
 async function handleMoveClick(button) {
     try {
         const moveName = button.dataset.move
-        const moveData = await fetchMoveData(moveName)
+        const moveData = await apiUtils.fetchMoveData(moveName)
 
         const damageInfo = {
             type: moveData.type.name,
@@ -40,35 +39,29 @@ async function handleMoveClick(button) {
         const specialEffects = new SpecialEffects()
         specialEffects.apply(moveData)
 
-        const { attackStat, defenseStat } = getBattleStats(damageInfo.category)
+        const { attackerStat, defenderStat } = damageUtils.getDamageClass(stats.AllyStats, stats.EnemyStats, damageInfo.category)
 
         const typeEfficiency = await getDamageEfficiency(moveData.type.name, [stats.EnemyStats.types])
 
-        const baseDamage = calculateBaseDamage(damageInfo.power, attackStat, defenseStat, typeEfficiency)
+        const baseDamage = damageUtils.calculateBaseDamage(damageInfo.power, attackerStat, defenderStat, typeEfficiency)
+        
+        //teste
+        const enemyResponse = await axios.get(`https://pokeapi.co/api/v2/pokemon/${EnemyPokemonId}`)
 
+        const moves = []
+
+        for(var i = 0; i < 4; i++) {
+            moves.push(enemyResponse.data.moves[i].move.name)
+        }
+        
+        const enemy = new Enemy(stats.EnemyStats, moves, stats.AllyStats.types)
+
+        enemy.analyzingOpponent()
+        
+        //teste
         console.log(baseDamage)
     } catch (error) {
         console.error(error)
-    }
-}
-
-function getBattleStats(category) {
-    if (category === "physical") {
-        return {
-            attackStat: stats.AllyStats.attack,
-            defenseStat: stats.EnemyStats.defense,
-        }
-    } else if (category === "special") {
-        return {
-            attackStat: stats.AllyStats.spAttack,
-            defenseStat: stats.EnemyStats.spDefense,
-        }
-    } else {
-        console.warn("Sem categoria de dano")
-        return {
-            attackStat: 0,
-            defenseStat: 0,
-        }
     }
 }
 

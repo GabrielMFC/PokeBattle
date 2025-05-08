@@ -1,6 +1,14 @@
+function formatPlayersTypes(data) {
+    let types = []
+    for(var i = 0; i < data.types.length; i++){
+        types.push(data.types[i].type.name)
+    }
+    return types
+}
+
 function calculateStats(data) {
     return {
-        types : data.types,
+        types : formatPlayersTypes(data),
             hp : ((data.stats[0].base_stat + 31) * 2) + 110,
             attack : ((2 * data.stats[1].base_stat + 31)) + 5,
             defense : ((2 * data.stats[2].base_stat + 31)) + 5,

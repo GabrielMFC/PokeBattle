@@ -1,5 +1,7 @@
 Problemas:
 
+passar de turno
+
 moves que mudam tipagem em batalha(soak, magic powder)
 
 moves com dano fixo(ex: dragon rage, sonic boom)

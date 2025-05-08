@@ -1,4 +1,4 @@
-class SpecialEffects {
+export default class SpecialEffects {
     #validate(allyMove) {
         let isSpecialEffect = allyMove.effect_entries[0].short_effect 
 
@@ -11,5 +11,3 @@ class SpecialEffects {
         }
     }
 }
-
-export default SpecialEffects
